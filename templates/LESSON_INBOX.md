@@ -23,6 +23,7 @@ Add a lesson here when all of these are true:
 - Lesson: [what should future agents do differently?]
 - Evidence: [what happened that supports this lesson?]
 - Suggested destination: [skill, role brief, docs, test harness, or unknown]
+- Verification plan: [how should we know this helped?]
 - Intake status: candidate
 - Review outcome: pending
 ```
