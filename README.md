@@ -24,6 +24,35 @@ agent does real work
 Skills written only from common sense are shallow. Skills grown from real
 failures are not.
 
+## Why This Works
+
+A skill is a hypothesis. It says: "doing it this way produces good results."
+
+Real work is the test. When an agent follows the skill and something breaks,
+drifts, or costs more than expected, that is data. The skill was wrong, or
+incomplete, or right in a narrower range than assumed.
+
+The refinement loop treats that data seriously:
+
+```
+💡 Hypothesize   →   write the skill from your best current understanding
+        ↑
+        |
+🔁 Repeat        ←   does the framework still hold?
+        |                  yes → small update   no → rethink from scratch
+        ↓
+🔨 Test          →   let agents use it on real tasks
+        ↓
+📋 Collect       →   what worked, what failed, what surprised
+        ↓
+✏️  Update        →   promote the lesson into the skill
+```
+
+This is not a new idea. It is how any field improves when it takes evidence
+seriously. The only thing new here is applying it deliberately to AI agent
+skills, where the feedback loop is fast and the cost of repeated mistakes is
+real.
+
 ## What This Solves
 
 Without a review loop, skill updates fail in one of two ways:
@@ -104,6 +133,8 @@ Read `docs/` first. Copy from `templates/` into your own workspace.
 - `templates/worker_roles/` — role brief templates
 - `templates/skills/` — skill templates
 - `examples/migration-skill-iteration/` — complete iteration cycle, v1 to v2
+- `examples/mature-role-brief/` — what a role brief looks like after real tasks
+  have promoted lessons into it
 
 ## Not This
 
