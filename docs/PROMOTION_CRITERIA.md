@@ -23,6 +23,19 @@ role brief.
 - Does it describe current project state? Put it in a handoff or project doc.
 - Does it describe verification strategy? Put it in a test harness guide.
 
+## Verification
+
+- How often is this lesson expected to be reused?
+- What is the cost of being wrong?
+- What is the cheapest useful verification method?
+- Does this deserve next-use observation, a manual check, an automated eval, a
+  regression test, or a production metric?
+- Would the verification cost exceed the expected value of the rule?
+
+Do not build a heavy eval loop for a skill with no expected reuse. Use
+lightweight evidence for low-frequency skills, and reserve automated evals for
+rules that are repeated, risky, or expensive when wrong.
+
 ## Quality
 
 - Is it concise?
