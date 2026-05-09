@@ -31,6 +31,10 @@ role brief.
 - Does it conflict with an existing rule?
 - Would a weaker model apply it correctly?
 
+If unsure, paste the candidate rule into a fresh low-context agent session and
+ask how it would apply the rule. If the answer drifts, requires missing context,
+or applies the rule too broadly, narrow the rule or keep it unpromoted.
+
 ## Decision Labels
 
 - `promoted`: merged into a durable artifact.
