@@ -1,7 +1,7 @@
 # skill-refinement
 
-Your agents do real work. That work exposes failures, edge cases, and repeated
-costs. Most of that knowledge disappears into chat history.
+Your subagents do real work. That work exposes failures, edge cases, and
+repeated costs. Most of that knowledge disappears into chat history.
 
 **This repository gives it somewhere to go.**
 
@@ -9,16 +9,21 @@ costs. Most of that knowledge disappears into chat history.
 
 If you use skills with AI agents, this repository is for you.
 
-You already know the loop: do something, find it can be done better, write that
-down, do it better next time. skill-refinement makes that loop explicit and
-operational for AI agent workflows.
+The loop only turns if subagents do bounded, repeated work. A subagent runs
+the same class of task many times — code review, migration, research, test
+harness. That repetition is what produces lessons. A main agent handling
+one-off decisions is too varied to generate reliable signal.
 
 ```text
-agent does real work
--> lesson candidate surfaces
--> lesson waits for review
--> reviewed lesson updates a skill or role brief
--> next agent loads the improved method
+🤖 subagent does bounded, repeated work
+        ↓
+📝 lesson candidate surfaces from real failure or cost
+        ↓
+📬 lesson waits for review
+        ↓
+✅ reviewed lesson updates a skill or role brief
+        ↓
+🤖 next subagent loads the improved method
 ```
 
 Skills written only from common sense are shallow. Skills grown from real
@@ -78,8 +83,10 @@ Three layers:
 3. **Lesson inbox** — a low-commitment queue for candidate lessons before they
    are promoted into durable rules.
 
-Agents can use skills and append lesson candidates. They do not own skill
-updates. That gate belongs to the human operator and the main agent.
+Subagents use skills and append lesson candidates. They do not own skill
+updates. That gate belongs to the human operator — or a main agent if your
+workflow has one. The subagent's job is to do the work and report what it
+learned. Promotion is someone else's decision.
 
 ## What Promoted Lessons Look Like
 
@@ -106,9 +113,10 @@ inbox entries and promotion decision.
 skills directly. Right for projects where skills are not yet version-controlled,
 or where the rules are high-stakes.
 
-**Git-native** — the main agent drafts skill changes as commits or pull
-requests. Human reviews the diff. Merge is promote, close is reject. Git history
-is the audit trail. `LESSON_INBOX.md` becomes optional.
+**Git-native** — skill changes are proposed as commits or pull requests, by you
+or an agent you trust with that task. Human reviews the diff. Merge is promote,
+close is reject. Git history is the audit trail. `LESSON_INBOX.md` becomes
+optional.
 
 Most projects start with the manual inbox and migrate toward git-native as trust
 and tooling mature. See `docs/MODES.md` for the decision table.
@@ -139,7 +147,8 @@ Read `docs/` first. Copy from `templates/` into your own workspace.
 ## Not This
 
 - Not an automatic skill updater. The review gate is the point.
-- Not a claim that every project needs subagents.
+- Not useful without subagents doing repeated, bounded work. That repetition
+  is the signal source. Without it, the loop has nothing to turn on.
 - Not a replacement for human judgment.
 
 ## License
