@@ -30,6 +30,14 @@ role brief.
 - Does it avoid overfitting to one incident?
 - Does it conflict with an existing rule?
 - Would a weaker model apply it correctly?
+- If the lesson came from a specialist worker, does it name that worker's native
+  optimization target before generalizing the advice?
+
+Specialists produce useful signal because their work is narrow and repeated.
+They also produce local bias. A GitHub-maintenance worker may over-recommend
+issue templates, pull request templates, or automation because repository
+hygiene is its native frame. Review should preserve the signal while preventing
+that frame from becoming universal doctrine.
 
 If unsure, paste the candidate rule into a fresh low-context agent session and
 ask how it would apply the rule. If the answer drifts, requires missing context,
