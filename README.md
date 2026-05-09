@@ -77,12 +77,18 @@ right durable artifact.
 
 ## Repository Contents
 
+Read `docs/` first to understand the vocabulary and loop. Then copy from
+`templates/` into your own workspace.
+
 - `docs/CONCEPTS.md` explains the vocabulary.
 - `docs/WORKFLOW.md` gives the operating loop.
+- `docs/MODES.md` explains when to use a manual inbox versus a git-native review flow.
 - `docs/PROMOTION_CRITERIA.md` gives review questions for lesson promotion.
 - `templates/LESSON_INBOX.md` is a starter inbox.
 - `templates/worker_roles/` contains role brief templates.
 - `templates/skills/` contains small, general-purpose skill templates.
+- `examples/` shows a complete iteration cycle from initial skill to promoted
+  lesson.
 
 ## Non-Goals
 
