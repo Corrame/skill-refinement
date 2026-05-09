@@ -48,3 +48,15 @@ A promoted rule is not permanent. If it starts creating avoidable cost, conflict
 with a tooling upgrade, or applies to a narrower case than expected, it can
 re-enter the inbox as a lesson against itself. The same review gate decides
 whether to narrow, replace, or remove it.
+
+## Verification Depth
+
+Verification depth is how much evidence a promoted lesson deserves after
+promotion.
+
+Not every rule needs a benchmark, regression suite, or repeated simulation.
+Low-frequency skills may only need lightweight next-use observation. High-risk
+or frequently reused skills may justify automated evals, regression cases, or
+production metrics.
+
+Verification depth should match reuse frequency, risk, and verification cost.
