@@ -140,8 +140,26 @@ That rule was not in the initial skill. It came from a real failure. It was
 reviewed, promoted, and is now loaded by every agent that touches migrations in
 that project.
 
+A more mature role brief starts to accumulate local rules like these:
+
+> Use `.venv/bin/python` for all local validation. Do not assume `python` or
+> `python3` resolves to the project virtualenv.
+>
+> Before writing a test call, verify the target function's current signature
+> and keyword-only arguments directly in source. Do not reconstruct the call
+> from memory or documentation — both drift.
+>
+> Integration tests that rely on a hardcoded repo-root `tmp_path` will silently
+> change semantics when runtime path handling becomes profile-aware. When
+> touching path isolation, pass an explicit root to any affected test fixtures.
+
+These are not general slogans. They are project-shaped rules produced by
+repeated work, failure attribution, and review.
+
 See `examples/migration-skill-iteration/` for a complete before/after with the
-inbox entries and promotion decision.
+inbox entries and promotion decision. See `examples/mature-role-brief/` and
+`examples/mature-skill/` for examples of mature artifacts after multiple
+promoted lessons.
 
 ## Two Modes
 
@@ -179,6 +197,7 @@ Read `docs/` first. Copy from `templates/` into your own workspace.
 - `examples/migration-skill-iteration/` — complete iteration cycle, v1 to v2
 - `examples/mature-role-brief/` — what a role brief looks like after real tasks
   have promoted lessons into it
+- `examples/mature-skill/` — what a skill looks like after repeated promotion
 - `examples/bad-promotion-example/` — a lesson that should not be promoted
 
 ## Not This
@@ -189,6 +208,8 @@ Read `docs/` first. Copy from `templates/` into your own workspace.
 - Not a replacement for human judgment.
 - Not a CLI-first tool. It is a text-first protocol that any capable agent can
   read and operate.
+- Not self-applying. This repository is refined through issues, pull requests,
+  and maintainer review, not through the loop it describes.
 
 ## Discussion
 
