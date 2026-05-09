@@ -190,6 +190,12 @@ Read `docs/` first. Copy from `templates/` into your own workspace.
 - Not a CLI-first tool. It is a text-first protocol that any capable agent can
   read and operate.
 
+## Discussion
+
+Initial public note: https://x.com/HomuraTokido/status/2052946438288802256
+
+Related architecture question: https://github.com/NousResearch/hermes-agent/issues/21303
+
 ## License
 
 MIT. See `LICENSE`.
