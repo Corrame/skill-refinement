@@ -23,11 +23,13 @@ Add a lesson here when all of these are true:
 - Lesson: [what should future agents do differently?]
 - Evidence: [what happened that supports this lesson?]
 - Suggested destination: [skill, role brief, docs, test harness, or unknown]
-- Status: kept
+- Intake status: candidate
+- Review outcome: pending
 ```
 
 ## Review Outcomes
 
+- `pending`: not reviewed yet.
 - `promoted`: merged into a durable skill, role brief, or doc.
 - `kept`: useful context, but not stable enough yet.
 - `rejected`: too local, duplicated, wrong, stale, or unclear.
