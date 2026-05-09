@@ -7,6 +7,8 @@ costs. Most of that knowledge disappears into chat history.
 
 ---
 
+If you use skills with AI agents, this repository is for you.
+
 You already know the loop: do something, find it can be done better, write that
 down, do it better next time. skill-refinement makes that loop explicit and
 operational for AI agent workflows.
