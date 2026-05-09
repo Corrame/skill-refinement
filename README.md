@@ -1,109 +1,113 @@
-# Evidence-Based Skill Iteration
+# skill-refinement
 
-A practical review loop for keeping AI agent skills useful after their first
-draft.
+Your agents do real work. That work exposes failures, edge cases, and repeated
+costs. Most of that knowledge disappears into chat history.
 
-Most skill systems make it easy to create a skill. Fewer systems explain how a
-skill should improve after real work exposes failures, edge cases, and repeated
-costs.
+**This repository gives it somewhere to go.**
 
-This repository proposes a lightweight pattern:
+---
 
-```text
-subagent or agent does real work
--> writes a lesson candidate
--> lesson enters a low-commitment inbox
--> human + stronger reviewer decide whether it generalizes
--> promoted lesson updates a skill, role brief, or playbook
--> future agents load the improved method
-```
-
-The core idea is simple: **skills should grow from reviewed evidence, not from
-model guesswork alone.**
-
-## Who This Is For
-
-- People using AI coding agents with reusable skills, rules, or playbooks.
-- Teams using subagents or smaller models for bounded execution work.
-- Anyone who wants skills to improve without letting every local lesson become
-  permanent doctrine.
-
-This is not tied to a specific codebase, model provider, or agent framework.
-
-## The Problem
-
-A skill written only from common sense is often useful, but shallow. It can help
-a weaker model follow a workflow, yet it may not help a stronger model much
-because it mostly repeats what the stronger model already knows.
-
-Real improvement starts when a skill absorbs evidence from practice:
-
-- a command failed in a surprising way;
-- a test harness drifted from the runtime;
-- a subagent repeatedly misunderstood an ownership boundary;
-- a migration exposed hidden coupling;
-- a reviewer found that a rule was too broad, stale, or unsafe.
-
-Without a review loop, skill updates usually fail in one of two ways:
-
-- no update path, so the same mistakes repeat;
-- direct self-updates, so temporary local lessons pollute long-term rules.
-
-## The Pattern
-
-Use three layers:
-
-1. **Role brief**: who is doing the work, what authority they have, what they
-   must not do, and how they report back.
-2. **Skill**: how to perform a reusable kind of work, including method,
-   evidence standard, and verification habit.
-3. **Lesson inbox**: a low-commitment queue for candidate lessons from real
-   tasks before they are promoted.
-
-The review loop is:
+You already know the loop: do something, find it can be done better, write that
+down, do it better next time. skill-refinement makes that loop explicit and
+operational for AI agent workflows.
 
 ```text
-real task
--> lesson candidate
--> lesson inbox
--> reviewed promotion
--> skill / role brief / docs update
+agent does real work
+-> lesson candidate surfaces
+-> lesson waits for review
+-> reviewed lesson updates a skill or role brief
+-> next agent loads the improved method
 ```
 
-Subagents can use skills and suggest improvements. They should not own skill
-updates. A human operator and a capable main agent should review whether a
-candidate lesson is reusable, evidenced, non-duplicative, and placed in the
-right durable artifact.
+Skills written only from common sense are shallow. Skills grown from real
+failures are not.
 
-## Repository Contents
+## What This Solves
 
-Read `docs/` first to understand the vocabulary and loop. Then copy from
-`templates/` into your own workspace.
+Without a review loop, skill updates fail in one of two ways:
 
-- `docs/CONCEPTS.md` explains the vocabulary.
-- `docs/WORKFLOW.md` gives the operating loop.
-- `docs/MODES.md` explains when to use a manual inbox versus a git-native review flow.
-- `docs/PROMOTION_CRITERIA.md` gives review questions for lesson promotion.
-- `templates/LESSON_INBOX.md` is a starter inbox.
-- `templates/worker_roles/` contains role brief templates.
-- `templates/skills/` contains small, general-purpose skill templates.
-- `examples/` shows a complete iteration cycle from initial skill to promoted
-  lesson.
+**No update path.** The same mistakes repeat. The same edge cases surprise the
+same agents. Experience evaporates.
 
-## Non-Goals
+**Direct self-updates.** Agents rewrite their own rules. Local accidents become
+permanent doctrine. The skill drifts away from reality in a different direction.
 
-- This is not an automatic skill updater.
-- This is not a claim that every project needs subagents.
-- This is not a replacement for human judgment.
-- This is not legal, security, or compliance advice.
+The lesson inbox sits between these two failure modes. Lessons accumulate from
+real work. A human and a capable reviewer decide what generalizes. Only reviewed
+lessons become durable rules.
+
+## How It Works
+
+Three layers:
+
+1. **Role brief** — who the agent is for this task, what it owns, what it must
+   not do, and how it reports back.
+2. **Skill** — how to perform a reusable kind of work: the method, the
+   verification habit, the evidence standard.
+3. **Lesson inbox** — a low-commitment queue for candidate lessons before they
+   are promoted into durable rules.
+
+Agents can use skills and append lesson candidates. They do not own skill
+updates. That gate belongs to the human operator and the main agent.
+
+## What Promoted Lessons Look Like
+
+In practice, promoted lessons become a **local knowledge section** at the bottom
+of a role brief or skill — a small set of rules that only someone who has run
+this project in anger would know to write.
+
+A real example from a production agent project:
+
+> *Before running a migration, check for active long-running writers on the
+> target table. A migration that exits 0 while a batch job is writing can leave
+> the rollback path untested.*
+
+That rule was not in the initial skill. It came from a real failure. It was
+reviewed, promoted, and is now loaded by every agent that touches migrations in
+that project.
+
+See `examples/migration-skill-iteration/` for a complete before/after with the
+inbox entries and promotion decision.
+
+## Two Modes
+
+**Manual inbox** — lessons go into `LESSON_INBOX.md`, a human reviews and edits
+skills directly. Right for projects where skills are not yet version-controlled,
+or where the rules are high-stakes.
+
+**Git-native** — the main agent drafts skill changes as commits or pull
+requests. Human reviews the diff. Merge is promote, close is reject. Git history
+is the audit trail. `LESSON_INBOX.md` becomes optional.
+
+Most projects start with the manual inbox and migrate toward git-native as trust
+and tooling mature. See `docs/MODES.md` for the decision table.
 
 ## Quick Start
 
 1. Copy `templates/LESSON_INBOX.md` into your agent workspace.
 2. Copy only the role briefs and skills that match your actual workflow.
-3. Ask agents to append candidate lessons after real tasks.
+3. Ask agents to append one lesson candidate at the end of each real task.
 4. Review the inbox periodically.
 5. Promote only lessons that are repeatable, evidenced, and useful.
+
+## Repository Contents
+
+Read `docs/` first. Copy from `templates/` into your own workspace.
+
+- `docs/CONCEPTS.md` — vocabulary
+- `docs/WORKFLOW.md` — the operating loop
+- `docs/MODES.md` — manual inbox vs git-native, with a decision table
+- `docs/PROMOTION_CRITERIA.md` — review questions for promotion decisions
+- `templates/LESSON_INBOX.md` — starter inbox
+- `templates/worker_roles/` — role brief templates
+- `templates/skills/` — skill templates
+- `examples/migration-skill-iteration/` — complete iteration cycle, v1 to v2
+
+## Not This
+
+- Not an automatic skill updater. The review gate is the point.
+- Not a claim that every project needs subagents.
+- Not a replacement for human judgment.
 
 ## License
 
