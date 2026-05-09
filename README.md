@@ -1,9 +1,13 @@
 # skill-refinement
 
-Your subagents do real work. That work exposes failures, edge cases, and
-repeated costs. Most of that knowledge disappears into chat history.
+Subagents learn things your system forgets.
 
-**This repository gives it somewhere to go.**
+`skill-refinement` is a review loop for turning real subagent failures, repeated
+costs, and edge cases into reviewed improvements to reusable skills and role
+briefs.
+
+It is not about remembering more. It is about deciding what deserves to become
+instruction.
 
 ---
 
@@ -21,9 +25,20 @@ one-off decisions is too varied to generate reliable signal.
         ↓
 📬 lesson waits for review
         ↓
+🚪 review gate decides what generalizes
+        ↓
 ✅ reviewed lesson updates a skill or role brief
         ↓
 🤖 next subagent loads the improved method
+```
+
+A minimal lesson candidate looks like this:
+
+```md
+Task: database migration review
+Observed: migration passed locally, but no check existed for active batch writers
+Candidate rule: before migration, check active long-running writers on target tables
+Decision: promoted to migration skill
 ```
 
 Skills written only from common sense are shallow. Skills grown from real
@@ -143,6 +158,7 @@ Read `docs/` first. Copy from `templates/` into your own workspace.
 - `examples/migration-skill-iteration/` — complete iteration cycle, v1 to v2
 - `examples/mature-role-brief/` — what a role brief looks like after real tasks
   have promoted lessons into it
+- `examples/bad-promotion-example/` — a lesson that should not be promoted
 
 ## Not This
 
