@@ -43,3 +43,8 @@ handoff document.
 
 Promotion should be done by a human operator and a capable reviewer, not by the
 worker that produced the lesson.
+
+A promoted rule is not permanent. If it starts creating avoidable cost, conflicts
+with a tooling upgrade, or applies to a narrower case than expected, it can
+re-enter the inbox as a lesson against itself. The same review gate decides
+whether to narrow, replace, or remove it.
