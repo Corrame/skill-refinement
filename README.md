@@ -53,17 +53,15 @@ failures are not.
 This repository does not require a framework, runtime, or package install. It is
 an agent-native working convention.
 
-Ask your agent to read this README and follow the loop:
+1. Copy `templates/LESSON_INBOX.md` into your agent workspace.
+2. Ask your agent to read this README.
+3. Use role briefs and skills for bounded, repeated work.
+4. Ask agents to append one lesson candidate after each task.
+5. Review the inbox before changing any skill or role brief.
+6. Promote only lessons that are evidenced, repeatable, and useful.
+7. Load the improved skill or role brief next time.
 
-1. Use a role brief and skill for bounded, repeated work.
-2. Append one lesson candidate when a task exposes a reusable failure, cost, or
-   edge case.
-3. Keep the candidate in an inbox until review.
-4. Promote only the lessons that are evidenced, repeatable, and useful.
-5. Load the improved skill or role brief next time.
-
-In other words: text files are the deployment surface. Review is the safety
-mechanism.
+Text files are the deployment surface. Review is the safety mechanism.
 
 ## Why This Works
 
@@ -174,14 +172,6 @@ optional.
 
 Most projects start with the manual inbox and migrate toward git-native as trust
 and tooling mature. See `docs/MODES.md` for the decision table.
-
-## Quick Start
-
-1. Copy `templates/LESSON_INBOX.md` into your agent workspace.
-2. Copy only the role briefs and skills that match your actual workflow.
-3. Ask agents to append one lesson candidate at the end of each real task.
-4. Review the inbox periodically.
-5. Promote only lessons that are repeatable, evidenced, and useful.
 
 ## Repository Contents
 
