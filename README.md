@@ -9,6 +9,10 @@ briefs.
 It is not about remembering more. It is about deciding what deserves to become
 instruction.
 
+No CLI is required. The protocol runs on text files and review: ask an agent to
+read this README, copy the lesson inbox into your workspace, and append one
+lesson candidate after each bounded task.
+
 ---
 
 If you use skills with AI agents, this repository is for you.
@@ -43,6 +47,23 @@ Decision: promoted to migration skill
 
 Skills written only from common sense are shallow. Skills grown from real
 failures are not.
+
+## Use With Any Agent
+
+This repository does not require a framework, runtime, or package install. It is
+an agent-native working convention.
+
+Ask your agent to read this README and follow the loop:
+
+1. Use a role brief and skill for bounded, repeated work.
+2. Append one lesson candidate when a task exposes a reusable failure, cost, or
+   edge case.
+3. Keep the candidate in an inbox until review.
+4. Promote only the lessons that are evidenced, repeatable, and useful.
+5. Load the improved skill or role brief next time.
+
+In other words: text files are the deployment surface. Review is the safety
+mechanism.
 
 ## Why This Works
 
@@ -166,6 +187,8 @@ Read `docs/` first. Copy from `templates/` into your own workspace.
 - Not useful without subagents doing repeated, bounded work. That repetition
   is the signal source. Without it, the loop has nothing to turn on.
 - Not a replacement for human judgment.
+- Not a CLI-first tool. It is a text-first protocol that any capable agent can
+  read and operate.
 
 ## License
 
